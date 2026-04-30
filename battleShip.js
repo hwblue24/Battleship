@@ -1,21 +1,63 @@
 export class Ship {
-    constructor(length, hitTotal, sunkStatus) {
+    constructor(length, hits) {
         this.length = length; 
-        this.hitTotal = hitTotal; 
-        this.sunkStatus = sunkStatus; 
+        this.hits = hits; 
     }
 
     hit() {
-        return this.hitTotal+=1
+        this.hits+=1
     }
 
     isSunk () {
-        if(this.length === this.hitTotal) {
-            this.sunkStatus = 'sunk'
-            
+        if(this.length === this.hits) {
+            return true 
+        }else {
+            return false 
         }
-        return this.sunkStatus
 
     }
 
 } 
+
+export class GameBoard {
+    
+    shipLocations = {};
+    missedShots = [];
+
+    placeShips(coordinate, length, hits) {
+
+        let key = coordinate;
+        let value = new Ship (length, hits)
+        this.shipLocations[key] = value; 
+    }
+
+    receiveAttack(coordinate, ) {
+        if(this.shipLocations[coordinate] === undefined) {
+            this.missedShots.push(coordinate)
+        }else {
+            let attackedShip = this.shipLocations[coordinate]; 
+            attackedShip.hit();
+        }
+    }
+
+    areAllShipsSunk () {
+        for (const key in this.shipLocations) {
+            let ship = this.shipLocations[key]
+            if(ship.isSunk()=== false) {
+                return false 
+            }
+        }
+        return true 
+
+    }
+
+}
+
+
+export class Player {
+    constructor(playerType){
+        this.playerType = playerType;
+        this.gameBoard = new GameBoard();
+    }
+
+}
