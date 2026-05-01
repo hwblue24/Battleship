@@ -5,8 +5,8 @@ import {GameBoard, Ship, Player} from "./battleShip.js"
 let human; 
 let computer;
 
-const btn = document.getElementById('playBtn'); 
-btn.addEventListener("click", function () {
+//on page load, players created and board rendered
+document.addEventListener("DOMContentLoaded", ()=> {
     human = new Player ('human');
     computer = new Player ('computer');
 
@@ -21,20 +21,18 @@ btn.addEventListener("click", function () {
 
     console.log(human.gameBoard.shipLocations)
     console.log(computer)
-    
-})
-
-//render using DOM 5x5 grid 
 
 
-document.addEventListener("DOMContentLoaded", ()=> {
+
     const parentHuman = document.querySelector("#humanBoardContainer");
     let columns = ["A","B","C","D","E"]; 
     for (let i=5;i>=1;i--) {
         for(const letters of columns) {
+            let coordinate = (letters+i)
             const div = document.createElement("div");
             div.setAttribute('class',`humanBoard`)
-            div.setAttribute("coordinate", letters+i)
+            div.setAttribute("coordinate", coordinate)
+            div.textContent = coordinate
             parentHuman.appendChild(div)
 
         }
@@ -43,14 +41,25 @@ document.addEventListener("DOMContentLoaded", ()=> {
     const parentComputer = document.querySelector("#computerBoardContainer");
     for (let i=5;i>=1;i--) {
         for(const letters of columns) {
+            let coordinate = (letters+i)
             const div = document.createElement("div");
             div.setAttribute('class',`computerBoard`)
-            div.setAttribute("coordinate", letters+i)
+            div.setAttribute("coordinate", coordinate)
+            div.textContent = coordinate
             parentComputer.appendChild(div)
 
         }
     }
 
+})
+
+//places ships on grid represented as filled in color
+
+const btn = document.getElementById('playBtn'); 
+btn.addEventListener("click", function () {
+    let humanShipLocations = human.gameBoard.shipLocations
 
 })
+
+
 
