@@ -29,18 +29,28 @@ btn.addEventListener("click", function () {
 
 document.addEventListener("DOMContentLoaded", ()=> {
     const parentHuman = document.querySelector("#humanBoardContainer");
-    for(let i=1;i<=25;i++) {
-        const div = document.createElement("div"); 
-        div.setAttribute('class',`humanBoard`)
-        parentHuman.appendChild(div)
+    let columns = ["A","B","C","D","E"]; 
+    for (let i=5;i>=1;i--) {
+        for(const letters of columns) {
+            const div = document.createElement("div");
+            div.setAttribute('class',`humanBoard`)
+            div.setAttribute("coordinate", letters+i)
+            parentHuman.appendChild(div)
+
+        }
     }
 
     const parentComputer = document.querySelector("#computerBoardContainer");
-    for(let i=1;i<=25;i++) {
-        const div = document.createElement("div"); 
-        div.setAttribute('class',`computerBoard`)
-        parentComputer.appendChild(div)
+    for (let i=5;i>=1;i--) {
+        for(const letters of columns) {
+            const div = document.createElement("div");
+            div.setAttribute('class',`computerBoard`)
+            div.setAttribute("coordinate", letters+i)
+            parentComputer.appendChild(div)
+
+        }
     }
-    
+
+
 })
 

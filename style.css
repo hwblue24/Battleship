@@ -28,7 +28,7 @@ body {
     text-align: center;
   }
 
-  #computerBoardContainer {
+#computerBoardContainer {
     width:600px;
     height:600px;
     display: grid;
@@ -41,7 +41,7 @@ body {
   }
 
 .computerBoard {
-    border: 1px solid blue;
+    border: 1px solid rgb(255, 0, 0);
     padding: 20px;
     text-align: center;
   }
