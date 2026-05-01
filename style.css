@@ -1,0 +1,48 @@
+body {
+    display:flex;
+    justify-content:center;
+    gap:200px;
+}
+
+#playBtn {
+    height:50px;
+    width:50px;
+    margin-right: auto;
+
+}
+
+#humanBoardContainer {
+    width:600px;
+    height:600px;
+    display: grid;
+    /* Creates 5 columns, each taking up 1 fraction of the available space */
+    grid-template-columns: repeat(5, 1fr);
+    /* Creates 5 rows, each taking up 1 fraction of the available space */
+    grid-template-rows: repeat(5, 1fr);
+    
+  }
+
+.humanBoard {
+    border: 1px solid blue;
+    padding: 20px;
+    text-align: center;
+  }
+
+  #computerBoardContainer {
+    width:600px;
+    height:600px;
+    display: grid;
+    /* Creates 5 columns, each taking up 1 fraction of the available space */
+    grid-template-columns: repeat(5, 1fr);
+    /* Creates 5 rows, each taking up 1 fraction of the available space */
+    grid-template-rows: repeat(5, 1fr);
+    margin-right:100px;
+    
+  }
+
+.computerBoard {
+    border: 1px solid blue;
+    padding: 20px;
+    text-align: center;
+  }
+
