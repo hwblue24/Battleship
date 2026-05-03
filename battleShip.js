@@ -20,7 +20,7 @@ export class Ship {
 } 
 
 export class GameBoard {
-    
+   
     shipLocations = {};
     missedShots = [];
 
@@ -31,12 +31,14 @@ export class GameBoard {
         this.shipLocations[key] = value; 
     }
 
-    receiveAttack(coordinate, ) {
+    receiveAttack(coordinate) {
         if(this.shipLocations[coordinate] === undefined) {
             this.missedShots.push(coordinate)
+            return this.hit = false;
         }else {
             let attackedShip = this.shipLocations[coordinate]; 
             attackedShip.hit();
+            return this.hit = true; 
         }
     }
 
@@ -62,3 +64,10 @@ export class Player {
 
 }
 
+export class GameFlowController {
+    constructor() {
+        this.human = new Player('human'); 
+        this.computer = new Player('computer')
+    }
+
+}
